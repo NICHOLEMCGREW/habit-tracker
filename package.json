@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.9",
-    "axios": "^1.6.3",
+    "axios": "^1.6.7",
     "babel-preset-expo": "^10.0.1",
     "dotenv": "^16.4.5",
     "expo": "~50.0.7",
