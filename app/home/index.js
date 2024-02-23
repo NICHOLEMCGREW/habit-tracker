@@ -52,6 +52,16 @@ import {
 	  setSelectedHabit(selectedHabit);
 	  setModalVisible(true);
 	};
+
+	const handleDayPress = (selectedDay) => {
+		// Logic to handle the press for the selected day
+		console.log(`Pressed on ${selectedDay}`);
+	  
+		// For demonstration purposes, you can add more logic here.
+		// For instance, navigate to a detailed view for the selected day.
+		// Replace the next line with your actual navigation logic.
+		router.push(`/home/detailed-view/${selectedDay}`);
+	  };
   
 	const handleCompletion = async () => {
 	  try {
@@ -290,35 +300,32 @@ import {
 					}}
 				  >
 					{days?.map((day, item) => {
-					  const isCompleted = habit.completed && habit.completed[day];
-  
-					  return (
-						<Pressable>
-						  <Text
-							style={{
-							  color: day === currentDay ? "red" : "white",
-							}}
-						  >
-							{day}
-						  </Text>
-						  {isCompleted ? (
-							<FontAwesome
-							  name="circle"
-							  size={24}
-							  color="white"
-							  style={{ marginTop: 12 }}
-							/>
-						  ) : (
-							<Feather
-							  name="circle"
-							  size={24}
-							  color="white"
-							  style={{ marginTop: 12 }}
-							/>
-						  )}
-						</Pressable>
-					  );
-					})}
+  const isCompleted = habit.completed && habit.completed[day];
+
+  return (
+    <Pressable key={day} onPress={() => handleDayPress(day)}>
+      <Text style={{ color: day === currentDay ? "red" : "white" }}>
+        {day}
+      </Text>
+      {isCompleted ? (
+        <FontAwesome
+          name="circle"
+          size={24}
+          color="white"
+          style={{ marginTop: 12 }}
+        />
+      ) : (
+        <Feather
+          name="circle"
+          size={24}
+          color="white"
+          style={{ marginTop: 12 }}
+        />
+      )}
+    </Pressable>
+  );
+})}
+
 				  </View>
 				</Pressable>
 			  ))}
