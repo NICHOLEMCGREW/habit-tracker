@@ -3,7 +3,6 @@ import {
   Text,
   View,
   TextInput,
-  TouchableOpacity,
   Pressable,
   Alert,
 } from "react-native";
@@ -41,7 +40,7 @@ const create = () => {
 
       if (response.status === 200) {
         setTitle("");
-        Alert.alert("Habit added successfully");
+        Alert.alert("Habit added succesfully", "Enjoy Practising");
       }
 
       console.log("habit added", response);
@@ -80,7 +79,7 @@ const create = () => {
           }}
         >
           {colors?.map((item, index) => (
-            <TouchableOpacity
+            <Pressable
               onPress={() => setSelectedColor(item)}
               key={index}
               activeOpacity={0.8}
@@ -90,7 +89,7 @@ const create = () => {
               ) : (
                 <FontAwesome name="square" size={30} color={item} />
               )}
-            </TouchableOpacity>
+            </Pressable>
           ))}
         </View>
       </View>
@@ -138,6 +137,7 @@ const create = () => {
       >
         {days?.map((item, index) => (
           <Pressable
+          key={item}
             style={{
               width: 40,
               height: 40,
